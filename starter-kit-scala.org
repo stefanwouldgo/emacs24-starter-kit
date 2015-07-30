@@ -143,7 +143,12 @@ refactoring.
 #+begin_src emacs-lisp
   (starter-kit-install-if-needed 'ensime)
 #+end_src
-
+    
+*** Start ensime whenever scala-mode is started
+#+BEGIN_SRC emacs-lisp
+  (require 'ensime)
+  (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+#+END_SRC
 ** Yasnippet
   :PROPERTIES:
   :tangle: yes

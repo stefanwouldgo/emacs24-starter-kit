@@ -63,7 +63,7 @@ Key Bindings.
 #+begin_src emacs-lisp 
 (global-set-key (kbd "C-x ^") 'join-line)
 #+end_src
-
+   
 ** If you want to be able to M-x without meta
 #+begin_src emacs-lisp 
 (global-set-key (kbd "C-x C-m") 'execute-extended-command)
@@ -107,3 +107,21 @@ Rgrep is infinitely useful in multi-file projects.
 #+begin_src emacs-lisp
   (define-key global-map "\C-x\C-r" 'rgrep)
 #+end_src
+** Smex
+#+BEGIN_SRC emacs-lisp
+(starter-kit-install-if-needed 'smex)
+(require 'smex)
+(smex-initialize)  
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "C-x C-m") 'smex) ;; supersedes binding in starter-kit-bindings.org
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+(global-set-key (kbd "C-x C-M") 'smex-major-mode-commands)
+;; This is your old M-x.
+(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+(setq smex-show-unbound-commands t)
+(smex-auto-update 30)
+#+END_SRC
+
+#+RESULTS:
+: [nil 0 30 0 t (lambda nil (if (smex-detect-new-commands) (smex-update))) nil idle 0]
+
